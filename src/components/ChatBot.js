@@ -19,6 +19,8 @@ const Chat = () => {
 			message: "I am a dumb user!",
 		},
 	]);
+	const [userInput, setUserInput] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		const fetchIntentData = async () => {
@@ -77,10 +79,45 @@ const Chat = () => {
 						<div className="flex items-center">
 							<input
 								type="text"
+								id="userInput"
 								placeholder="Type a message..."
 								className="w-full p-2 rounded-md border border-gray-400 focus:outline-none focus:border-blue-500"
+								value={userInput}
+								onChange={(e) => setUserInput(e.target.value)}
 							/>
-							<button className="bg-indigo-500 text-white px-4 py-2 rounded-md ml-2">
+							<button
+								className={`${
+									!userInput || isLoading
+										? "bg-gray-500"
+										: "bg-indigo-500"
+								}  text-white px-4 py-2 rounded-md ml-2`}
+								disabled={!userInput || isLoading}
+								onClick={() => {
+									if (!userInput) return;
+									if (isLoading) return;
+
+									setIsLoading(true);
+									try {
+										setMessages([
+											...messages,
+											{
+												type: "user",
+												message: userInput,
+											},
+										]);
+										setUserInput("");
+									} catch (error) {
+										console.error(error);
+										alert("something went wrong");
+									} finally {
+										setIsLoading(false);
+										// user focus on #userInput
+										document
+											.getElementById("userInput")
+											.focus();
+									}
+								}}
+							>
 								Send
 							</button>
 						</div>

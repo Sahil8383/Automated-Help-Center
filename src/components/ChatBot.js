@@ -1,7 +1,32 @@
 import React from "react";
 import History from "./History";
+import { useState, useEffect } from "react";
+import IntentCard from "./IntentCard";
 
 const Chat = () => {
+  const [intentData, setIntentData] = useState({
+    name: "INVOICE",
+    message: "View your invoice",
+  });
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchIntentData = async () => {
+      try {
+        const response = await fetch("API_ENDPOINT");
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setIntentData(data);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+
+    fetchIntentData();
+  }, []);
+
   return (
     <>
       <div class="flex h-screen overflow-hidden">
@@ -47,6 +72,16 @@ const Chat = () => {
                   class="w-8 h-8 rounded-full"
                 />
               </div>
+            </div>
+            <div>
+              {/* {error ? (
+              <div>Error: {error}</div>
+            ) : intentData ? (
+              <IntentCard intent={intentData} />
+            ) : (
+              <div>Loading...</div>
+            )} */}
+              <IntentCard intent={intentData} />
             </div>
           </div>
 

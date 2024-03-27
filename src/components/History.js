@@ -1,39 +1,40 @@
 import React from "react";
 
 const History = () => {
-  return (
-    <>
-      <div class="flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
-        <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
-          <img
-            src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato"
-            alt="User Avatar"
-            class="w-12 h-12 rounded-full"
-          />
-        </div>
-        <div class="flex-1">
-          <h2 class="text-lg font-semibold">Alice</h2>
-          <p class="text-gray-600">Hoorayy!!</p>
-        </div>
-      </div>
+	return (
+		<>
+			<div className="flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+				<div className="w-12 h-12 bg-gray-300 rounded-full mr-3">
+					<img
+						src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato"
+						alt="User Avatar"
+						className="w-12 h-12 rounded-full"
+					/>
+				</div>
+				<div className="flex-1">
+					<h2 className="text-lg font-semibold">Alice</h2>
+					<p className="text-gray-600">Hoorayy!!</p>
+				</div>
+			</div>
 
-      <div class="flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
-        <div class="w-12 h-12 bg-gray-300 rounded-full mr-3">
-          <img
-            src="https://placehold.co/200x/ad922e/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato"
-            alt="User Avatar"
-            class="w-12 h-12 rounded-full"
-          />
-        </div>
-        <div class="flex-1">
-          <h2 class="text-lg font-semibold">Martin</h2>
-          <p class="text-gray-600">
-            That pizza place was amazing! We should go again sometime. 🍕
-          </p>
-        </div>
-      </div>
-    </>
-  );
+			<div className="flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded-md">
+				<div className="w-12 h-12 bg-gray-300 rounded-full mr-3">
+					<img
+						src="https://placehold.co/200x/ad922e/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato"
+						alt="User Avatar"
+						className="w-12 h-12 rounded-full"
+					/>
+				</div>
+				<div className="flex-1">
+					<h2 className="text-lg font-semibold">Martin</h2>
+					<p className="text-gray-600">
+						That pizza place was amazing! We should go again
+						sometime. 🍕
+					</p>
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default History;

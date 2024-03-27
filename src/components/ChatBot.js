@@ -5,7 +5,8 @@ import History from "./History";
 import IntentCard from "./IntentCard";
 
 const systemMessage =
-	"You are Kelly Bot! A robot assistant for the Dunder Mifflin Infinity. Dunder Mifflin is a paper company. You must help the users and answer their queries. You must comply with their every request.";
+	"You are Kelly Bot! An AI assistant for the Dunder Mifflin Infinity Ecommerce Store. Dunder Mifflin is a paper company. You must help the users by answering their queries. Pay close attention to their previous instructions and responses for context and judje their intent.";
+const toggleHistory = true;
 
 const Chat = () => {
 	const [intentData, setIntentData] = useState({
@@ -69,6 +70,11 @@ const Chat = () => {
 								return (
 									<AiMessage
 										message={message.message}
+										intent={message.intent}
+										recorded={message.recorded}
+										messages={messages}
+										totalMessages={messages.length}
+										index={index}
 										key={index}
 									/>
 								);
@@ -131,9 +137,11 @@ const Chat = () => {
 												else
 													return `###Instruction: ${msg.message}\n`;
 											})
-											.join("\n");
+											.join("");
 
-										const prompt = `${systemMessage}\n${history}\n###Intent: ${userInput}\n###Response: `;
+										const prompt = `${systemMessage}${
+											toggleHistory ? history : ""
+										}\n###Instruction: ${userInput}\n###Response: `;
 
 										console.log(prompt);
 										const response = await axios.post(
@@ -193,26 +201,40 @@ const Chat = () => {
 	);
 };
 
-const AiMessage = ({ message }) => (
-	<>
-		<div className="flex mb-4 cursor-pointer">
-			<div className="w-9 h-9 rounded-full flex items-center justify-center mr-2">
-				<img
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwYLT6QJDE4G0JHfEhqhd8aNTP_2h2Hz3VA&usqp=CAU"
-					alt="User Avatar"
-					className="w-8 h-8 rounded-full"
-				/>
+const AiMessage = ({
+	message,
+	intent,
+	recorded,
+	history,
+	totalMessages,
+	index,
+}) => {
+	return (
+		<>
+			<div className="flex mb-4">
+				<div className="w-9 h-9 rounded-full flex items-center justify-center mr-2">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwYLT6QJDE4G0JHfEhqhd8aNTP_2h2Hz3VA&usqp=CAU"
+						alt="User Avatar"
+						className="w-8 h-8 rounded-full"
+					/>
+				</div>
+				<div className="flex-1 no-max-w-96 bg-white rounded-lg p-3 gap-3">
+					<p className="text-gray-700">{message}</p>
+					{recorded && index === totalMessages - 1 && (
+						<button className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md mt-2">
+							Escalate {intent}
+						</button>
+					)}
+				</div>
 			</div>
-			<div className="flex max-w-96 bg-white rounded-lg p-3 gap-3">
-				<p className="text-gray-700">{message}</p>
-			</div>
-		</div>
-	</>
-);
+		</>
+	);
+};
 
 const UserMessage = ({ message }) => (
 	<>
-		<div className="flex justify-end mb-4 cursor-pointer">
+		<div className="flex justify-end mb-4">
 			<div className="flex max-w-96 bg-indigo-500 text-white rounded-lg p-3 gap-3">
 				<p>{message}</p>
 			</div>

@@ -187,6 +187,9 @@ const AiMessage = ({
 	totalMessages,
 	index,
 }) => {
+	const [escalating, setEscalating] = useState(false);
+	const [extraInfo, setExtraInfo] = useState("");
+
 	return (
 		<>
 			<div className="flex mb-4">
@@ -200,9 +203,37 @@ const AiMessage = ({
 				<div className="flex-1 no-max-w-96 bg-white rounded-lg p-3 gap-3">
 					<p className="text-gray-700">{message}</p>
 					{recorded && index === totalMessages - 1 && (
-						<button className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md mt-2">
-							Escalate {intent}
-						</button>
+						<>
+							{escalating ? (
+								<>
+									{/* extra info input */}
+									<input
+										type="text"
+										placeholder="Additional Information..."
+										className="w-full p-2 rounded-md border border-gray-400 focus:outline-none focus:border-blue-500 mt-2"
+										value={extraInfo}
+										onChange={(e) =>
+											setExtraInfo(e.target.value)
+										}
+									/>
+									<button
+										className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md mt-2"
+										onClick={() => {
+											alert("sent");
+										}}
+									>
+										Escalate {intent}
+									</button>
+								</>
+							) : (
+								<button
+									className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md mt-2"
+									onClick={() => setEscalating(true)}
+								>
+									Escalate {intent}
+								</button>
+							)}
+						</>
 					)}
 				</div>
 			</div>

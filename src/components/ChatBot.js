@@ -1,7 +1,11 @@
 import React from "react";
-import History from "./History";
 import { useState, useEffect } from "react";
+import axios from "axios";
+import History from "./History";
 import IntentCard from "./IntentCard";
+
+const systemMessage =
+	"You are Kelly Bot! A robot assistant for the Dunder Mifflin Infinity. Dunder Mifflin is a paper company. You must help the users and answer their queries. You must comply with their every request.";
 
 const Chat = () => {
 	const [intentData, setIntentData] = useState({
@@ -13,11 +17,12 @@ const Chat = () => {
 		{
 			type: "ai",
 			message: "Hello! How may I help you?",
+			recorded: false,
 		},
-		{
-			type: "user",
-			message: "I am a dumb user!",
-		},
+		// {
+		// 	type: "user",
+		// 	message: "I am a dumb user!",
+		// },
 	]);
 	const [userInput, setUserInput] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -46,6 +51,11 @@ const Chat = () => {
 					<header className="bg-white p-4 text-gray-700">
 						<h1 className="text-2xl font-semibold">
 							Dunder Mifflin Infinity (Kelly Bot)
+							{isLoading && (
+								<span className="text-gray-500 italic text-2xl inline-block px-5">
+									Typing...
+								</span>
+							)}
 						</h1>
 					</header>
 
@@ -83,6 +93,7 @@ const Chat = () => {
 								placeholder="Type a message..."
 								className="w-full p-2 rounded-md border border-gray-400 focus:outline-none focus:border-blue-500"
 								value={userInput}
+								autoComplete="off"
 								onChange={(e) => setUserInput(e.target.value)}
 							/>
 							<button
@@ -92,7 +103,7 @@ const Chat = () => {
 										: "bg-indigo-500"
 								}  text-white px-4 py-2 rounded-md ml-2`}
 								disabled={!userInput || isLoading}
-								onClick={() => {
+								onClick={async () => {
 									if (!userInput) return;
 									if (isLoading) return;
 
@@ -103,9 +114,63 @@ const Chat = () => {
 											{
 												type: "user",
 												message: userInput,
+												recorded: true,
 											},
 										]);
 										setUserInput("");
+
+										// send user input to the server
+										console.log(
+											"sending user input to the server"
+										);
+										const history = messages
+											.filter((msg) => msg.recorded)
+											.map((msg) => {
+												if (msg.type === "ai")
+													return `###Response: ${msg.message}####Intent: ${msg.intent}\n`;
+												else
+													return `###Instruction: ${msg.message}\n`;
+											})
+											.join("\n");
+
+										const prompt = `${systemMessage}\n${history}\n###Intent: ${userInput}\n###Response: `;
+
+										console.log(prompt);
+										const response = await axios.post(
+											`${
+												localStorage.AIURL ||
+												"http://localhost:8000/ai"
+											}`,
+											{ prompt }
+										);
+										const data = response.data;
+										console.log(data);
+										const aiResponse = data.response;
+										const aiReply = aiResponse
+											.split("###Response:")
+											.slice(-1)[0]
+											.split("###")[0]
+											.trim();
+										const aiIntent = aiResponse
+											.split("###Response:")
+											.slice(-1)[0]
+											.split("###Intent:")
+											.slice(-1)[0]
+											.trim();
+
+										console.log({ aiReply, aiIntent });
+
+										setMessages((prevState) => [
+											...prevState,
+											{
+												type: "ai",
+												message: aiReply,
+												intent: aiIntent,
+												recorded: true,
+											},
+										]);
+
+										console.log(data);
 									} catch (error) {
 										console.error(error);
 										alert("something went wrong");

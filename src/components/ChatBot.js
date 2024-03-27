@@ -45,7 +45,7 @@ const Chat = () => {
 				<div className="flex-1">
 					<header className="bg-white p-4 text-gray-700">
 						<h1 className="text-2xl font-semibold">
-							Dunder Mifflin (Kelly)
+							Dunder Mifflin Infinity (Kelly Bot)
 						</h1>
 					</header>
 
@@ -133,7 +133,7 @@ const AiMessage = ({ message }) => (
 		<div className="flex mb-4 cursor-pointer">
 			<div className="w-9 h-9 rounded-full flex items-center justify-center mr-2">
 				<img
-					src="https://placehold.co/200x/ffa8e4/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato"
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwYLT6QJDE4G0JHfEhqhd8aNTP_2h2Hz3VA&usqp=CAU"
 					alt="User Avatar"
 					className="w-8 h-8 rounded-full"
 				/>
@@ -153,7 +153,7 @@ const UserMessage = ({ message }) => (
 			</div>
 			<div className="w-9 h-9 rounded-full flex items-center justify-center ml-2">
 				<img
-					src="https://placehold.co/200x/b7a8ff/ffffff.svg?text=ʕ•́ᴥ•̀ʔ&font=Lato"
+					src="https://external-preview.redd.it/zwxkNhLpQCbhgqMS1yF1AESF_5y7unCmDy24e6pNliQ.jpg?auto=webp&s=6df3272f7301b39af1dc8dab07b7e5f4fcddd2d7"
 					alt="My Avatar"
 					className="w-8 h-8 rounded-full"
 				/>

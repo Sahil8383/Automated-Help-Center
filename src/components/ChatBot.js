@@ -9,11 +9,6 @@ const systemMessage =
 const toggleHistory = true;
 
 const Chat = () => {
-	const [intentData, setIntentData] = useState({
-		name: "INVOICE",
-		message: "View your invoice",
-	});
-	const [error, setError] = useState(null);
 	const [messages, setMessages] = useState([
 		{
 			type: "ai",
@@ -27,23 +22,6 @@ const Chat = () => {
 	]);
 	const [userInput, setUserInput] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
-
-	useEffect(() => {
-		const fetchIntentData = async () => {
-			try {
-				const response = await fetch("API_ENDPOINT");
-				if (!response.ok) {
-					throw new Error("Failed to fetch data");
-				}
-				const data = await response.json();
-				setIntentData(data);
-			} catch (error) {
-				setError(error.message);
-			}
-		};
-
-		fetchIntentData();
-	}, []);
 
 	return (
 		<>

@@ -5,7 +5,7 @@ import History from "./History";
 import IntentCard from "./IntentCard";
 
 const systemMessage =
-	"You are Kelly Bot! An AI assistant for the Dunder Mifflin Infinity Ecommerce Store. Dunder Mifflin is a paper company. You must help the users by answering their queries. Pay close attention to their previous instructions and responses for context and judje their intent.";
+	"You are Kelly AI! An AI assistant for the Dunder Mifflin Infinity Ecommerce Store. Dunder Mifflin is a paper company. You must help the users by answering their queries. Pay close attention to their previous instructions and responses for context and judje their intent.";
 const toggleHistory = true;
 
 const Chat = () => {
@@ -29,7 +29,7 @@ const Chat = () => {
 				<div className="flex-1">
 					<header className="bg-white p-4 text-gray-700">
 						<h1 className="text-2xl font-semibold">
-							DMI Ecomerce (Kelly Bot)
+							DMI Ecomerce (Kelly AI)
 							{isLoading && (
 								<span className="text-gray-500 italic text-2xl inline-block px-5">
 									Typing...

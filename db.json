@@ -1,0 +1,29 @@
+{
+  "escalate": [
+    {
+      "id": "a29b",
+      "a": "b"
+    },
+    {
+      "id": "9771",
+      "intent": "payment_issue",
+      "summary": "🤔 I'm sorry to hear that you're experiencing issues with entering the OTP on the bank page. It's important to ensure that the page is not frozen or experiencing any technical difficulties. Could you please provide me with more details about the specific page where you are entering the OTP? This will help me investigate the issue further and provide you with the most appropriate solution..",
+      "extraInfo": "On the bank page, when I enter the OTP to authorise the transaction, the page freezes after I click the \"proceed\" button",
+      "history": "###Instruction: I am having trouble making a payment with my credit card. what could be the problem?\n###Response: I'm sorry to hear that you're having trouble making a payment with your credit card. Let's try to troubleshoot the issue together. Could you please provide me with more details about the specific problem you're encountering? For example, is the payment method not recognized, or are you receiving an error message? This information will help me identify the root cause of the problem and provide you with the most appropriate solution..####Intent: payment_issue\n###Instruction: I am getting an OTP but the page freezes after I enter it.\n###Response: 🤔 I'm sorry to hear that you're experiencing issues with entering the OTP. It's important to ensure that the page is not frozen or experiencing any technical difficulties. Could you please provide me with more details about the specific page where you are entering the OTP? This will help me investigate the issue further and provide you with the most appropriate solution..####Intent: payment_issue\n"
+    },
+    {
+      "id": "fde4",
+      "intent": "payment_issue",
+      "summary": "🤔 I'm sorry to hear that you're experiencing issues with entering the OTP on the bank page. It's important to ensure that the page is not frozen or experiencing any technical difficulties. Could you please provide me with more details about the specific page where you are entering the OTP? This will help me investigate the issue further and provide you with the most appropriate solution..",
+      "extraInfo": "On the bank page, when I enter the OTP to authorise the transaction, the page freezes after I click the \"proceed\" button",
+      "history": "###Instruction: I am having trouble making a payment with my credit card. what could be the problem?\n###Response: I'm sorry to hear that you're having trouble making a payment with your credit card. Let's try to troubleshoot the issue together. Could you please provide me with more details about the specific problem you're encountering? For example, is the payment method not recognized, or are you receiving an error message? This information will help me identify the root cause of the problem and provide you with the most appropriate solution..####Intent: payment_issue\n###Instruction: I am getting an OTP but the page freezes after I enter it.\n###Response: 🤔 I'm sorry to hear that you're experiencing issues with entering the OTP. It's important to ensure that the page is not frozen or experiencing any technical difficulties. Could you please provide me with more details about the specific page where you are entering the OTP? This will help me investigate the issue further and provide you with the most appropriate solution..####Intent: payment_issue\n"
+    },
+    {
+      "id": "8a16",
+      "intent": "payment_issue",
+      "summary": "🤔 I'm sorry to hear that you're experiencing issues with entering the OTP on the bank page. It's important to ensure that the page is not frozen or experiencing any technical difficulties. Could you please provide me with more details about the specific page where you are entering the OTP? This will help me investigate the issue further and provide you with the most appropriate solution..",
+      "extraInfo": "On the bank page, when I enter the OTP to authorise the transaction, the page freezes after I click the \"proceed\" button",
+      "history": "###Instruction: I am having trouble making a payment with my credit card. what could be the problem?\n###Response: I'm sorry to hear that you're having trouble making a payment with your credit card. Let's try to troubleshoot the issue together. Could you please provide me with more details about the specific problem you're encountering? For example, is the payment method not recognized, or are you receiving an error message? This information will help me identify the root cause of the problem and provide you with the most appropriate solution..####Intent: payment_issue\n###Instruction: I am getting an OTP but the page freezes after I enter it.\n###Response: 🤔 I'm sorry to hear that you're experiencing issues with entering the OTP. It's important to ensure that the page is not frozen or experiencing any technical difficulties. Could you please provide me with more details about the specific page where you are entering the OTP? This will help me investigate the issue further and provide you with the most appropriate solution..####Intent: payment_issue\n"
+    }
+  ]
+}

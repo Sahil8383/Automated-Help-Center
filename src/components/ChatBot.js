@@ -53,6 +53,8 @@ const Chat = () => {
 										messages={messages}
 										totalMessages={messages.length}
 										index={index}
+										isLoading={isLoading}
+										setIsLoading={setIsLoading}
 										key={index}
 									/>
 								);
@@ -183,8 +185,10 @@ const AiMessage = ({
 	message,
 	intent,
 	recorded,
-	history,
+	messages,
 	totalMessages,
+	isLoading,
+	setIsLoading,
 	index,
 }) => {
 	const [escalating, setEscalating] = useState(false);
@@ -217,9 +221,91 @@ const AiMessage = ({
 										}
 									/>
 									<button
-										className="inline-block bg-indigo-500 text-white px-4 py-2 rounded-md mt-2"
-										onClick={() => {
-											alert("sent");
+										className={`inline-block ${
+											extraInfo && !isLoading
+												? "bg-indigo-500"
+												: "bg-gray-500"
+										} text-white px-4 py-2 rounded-md mt-2`}
+										onClick={async () => {
+											if (!extraInfo) return;
+											if (isLoading) return;
+
+											setIsLoading(true);
+
+											try {
+												console.log(
+													"sending log to server to get summary"
+												);
+												// send log to server to get summary
+												const history = messages
+													.filter(
+														(msg) => msg.recorded
+													)
+													.map((msg) => {
+														if (msg.type === "ai")
+															return `###Response: ${msg.message}####Intent: ${msg.intent}\n`;
+														else
+															return `###Instruction: ${msg.message}\n`;
+													})
+													.join("");
+
+												const prompt = `${systemMessage}${
+													toggleHistory ? history : ""
+												}\n###Instruction: ${extraInfo}\nsummarize this information to submit as a "${intent}" report to the backend\n###Response: `;
+
+												console.log(prompt);
+
+												const response =
+													await axios.post(
+														`${
+															localStorage.AIURL ||
+															"http://localhost:8000/ai"
+														}`,
+														{ prompt }
+													);
+												const data = response.data;
+												console.log(data);
+												const aiResponse =
+													data.response;
+												const aiSummary = aiResponse
+													.split("###Response:")
+													.slice(-1)[0]
+													.split("###")[0]
+													.trim();
+
+												console.log({ aiSummary });
+
+												// send to dummy backend
+												console.log(
+													"sending to dummy backend"
+												);
+
+												const escalationData = {
+													intent,
+													summary: aiSummary,
+													extraInfo,
+													history,
+												};
+
+												const response2 =
+													await axios.post(
+														"http://localhost:5000/escalate",
+														escalationData
+													);
+
+												console.log(response2.data);
+
+                        const ticketId = response2.data.id;
+
+												alert(
+													`Done! Thank you for using our service. Your ticket id is ${ticketId}`
+												);
+											} catch (error) {
+												console.error(error);
+												alert("something went wrong");
+											} finally {
+												setIsLoading(false);
+											}
 										}}
 									>
 										Escalate {intent}

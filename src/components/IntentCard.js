@@ -44,46 +44,48 @@ const IntentCard = ({ intent }) => {
       order.data.orderStatus = "cancelled";
       await axios.put(`${baseUrl}/${orderNumber}`, order.data);
       alert("Order cancelled successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error cancelling order:", error);
     }
   };
-  
+
   const changeOrder = async (orderNumber) => {
     try {
       const order = await axios.get(`${baseUrl}/${orderNumber}`);
       order.data.orderStatus = "changed";
       await axios.put(`${baseUrl}/${orderNumber}`, order.data);
       alert("Order changed successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error changing order:", error);
     }
-  }
+  };
 
   const placeOrder = async (order) => {
     try {
       await axios.post(baseUrl, order);
       alert("Order placed successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error placing order:", error);
     }
-  }
+  };
 
   const paymentIssue = async (transactionId) => {
     try {
       const order = await axios.get(`${baseUrl}/${transactionId}`);
-      if(order.data.paymentStatus === "issue") {
+      if (order.data.paymentStatus === "issue") {
         alert(`Payment issue: ${order.data.paymentStatus}`);
-      }
-      else {
+      } else {
         alert(`Payment status: ${order.data.paymentStatus}`);
       }
       alert(`Payment status: ${order.data.paymentStatus}`);
+      window.location.reload();
     } catch (error) {
       console.error("Error getting payment status:", error);
     }
-  }
-
+  };
 
   const trackRefund = async (orderNumber) => {
     try {
@@ -91,32 +93,34 @@ const IntentCard = ({ intent }) => {
       alert(`Refund status: ${order.data.refundStatus}`);
       alert(`Refund ETA: ${order.data.refundETA}`);
       alert(`Total amount: ${order.data.totalAmount}`);
+      window.location.reload();
     } catch (error) {
       console.error("Error tracking refund:", error);
     }
-  }
+  };
 
-  
   const feedback = async (orderId, review) => {
     try {
       await axios.post(`${reviewsUrl}`, {
         orderId,
-        review
+        review,
       });
+      alert("Feedback added successfully");
+      window.location.reload();
     } catch (error) {
       console.error("Error adding feedback:", error);
     }
-  }
-
+  };
 
   const checkInvoice = async (orderNumber) => {
     try {
       const order = await axios.get(`${baseUrl}/${orderNumber}`);
       alert(`Invoice number: ${order.data.invoiceNumber}`);
+      window.location.reload();
     } catch (error) {
       console.error("Error checking invoice:", error);
     }
-  }
+  };
 
   return (
     <div className="flex justify-end mb-4 cursor-pointer">
@@ -153,7 +157,7 @@ const IntentCard = ({ intent }) => {
               </a>
             </>
           )}
-           {intent === "place_order" && (
+          {intent === "place_order" && (
             <>
               <input
                 type="text"

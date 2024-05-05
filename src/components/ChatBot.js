@@ -274,6 +274,7 @@ const AiMessage = ({
                         alert(
                           `Done! Thank you for using our service. Your ticket id is ${ticketId}`
                         );
+                        window.location.reload();
                       } catch (error) {
                         console.error(error);
                         alert("something went wrong");

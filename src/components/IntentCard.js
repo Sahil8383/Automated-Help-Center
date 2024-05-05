@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 const IntentCard = ({ intent }) => {
   const baseUrl = "http://localhost:5000/orders";
-
+  const reviewsUrl = "http://localhost:5000/reviews";
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e) => {
@@ -95,6 +95,19 @@ const IntentCard = ({ intent }) => {
       console.error("Error tracking refund:", error);
     }
   }
+
+  
+  const feedback = async (orderId, review) => {
+    try {
+      await axios.post(`${reviewsUrl}`, {
+        orderId,
+        review
+      });
+    } catch (error) {
+      console.error("Error adding feedback:", error);
+    }
+  }
+
 
   const checkInvoice = async (orderNumber) => {
     try {

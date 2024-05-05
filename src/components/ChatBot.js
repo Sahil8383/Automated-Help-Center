@@ -189,14 +189,12 @@ const AiMessage = ({
             className="w-8 h-8 rounded-full"
           />
         </div>
-        {
-			intent && (
-				<IntentCard intent={intent} />
-			)
-		}
-		{/* <IntentCard intent={'Order'} /> */}
+        {intent && <IntentCard intent={intent} />}
+        {/* <IntentCard intent={'Order'} /> */}
         <div className="flex-1 no-max-w-96 bg-white rounded-lg p-3 gap-3">
-          <p className="text-gray-700">{message}</p>
+          <p className="text-gray-700">
+            {message.replaceAll("{{{", "").replaceAll("}}}", "")}
+          </p>
           {recorded && index === totalMessages - 1 && (
             <>
               {escalating ? (

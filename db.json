@@ -25,5 +25,272 @@
       "id": "1d80",
       "prompt": "You are Kelly AI! An AI assistant for the Dunder Mifflin Infinity Ecommerce Store. Dunder Mifflin is a paper company. You must help the users by answering their queries. Pay close attention to their previous instructions and responses for context and judje their intent.\n###Instruction: dadasd\n###Response: "
     }
+  ],
+  "orders": [
+    {
+      "id": "ORD001",
+      "transactionID": "TXN001",
+      "itemID": [
+        "P001",
+        "P002"
+      ],
+      "itemName": [
+        "Smartphone",
+        "Wireless Earbuds"
+      ],
+      "totalAmount": 1099.99,
+      "deliveryStatus": "Shipped",
+      "deliveryETA": "2024-05-10",
+      "deliveryID": "D001",
+      "paymentStatus": "Paid",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "cancelled",
+      "changeID": "C001",
+      "paymentMethod": "Credit Card",
+      "check_invoice_id": "INV001"
+    },
+    {
+      "id": "ORD002",
+      "transactionID": "TXN002",
+      "itemID": [
+        "P003"
+      ],
+      "itemName": [
+        "Tablet"
+      ],
+      "totalAmount": 499.99,
+      "deliveryStatus": "Delivered",
+      "deliveryETA": "2024-05-05",
+      "deliveryID": "D002",
+      "paymentStatus": "Paid",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Completed",
+      "changeID": "",
+      "paymentMethod": "PayPal",
+      "check_invoice_id": "INV002"
+    },
+    {
+      "id": "ORD003",
+      "transactionID": "TXN003",
+      "itemID": [
+        "P004"
+      ],
+      "itemName": [
+        "Smartwatch"
+      ],
+      "totalAmount": 199.99,
+      "deliveryStatus": "In Transit",
+      "deliveryETA": "2024-05-08",
+      "deliveryID": "D003",
+      "paymentStatus": "Pending",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Processing",
+      "changeID": "",
+      "paymentMethod": "Credit Card",
+      "check_invoice_id": "INV003"
+    },
+    {
+      "id": "ORD004",
+      "transactionID": "TXN004",
+      "itemID": [
+        "P005",
+        "P006",
+        "P007"
+      ],
+      "itemName": [
+        "Laptop",
+        "External Hard Drive",
+        "Mouse"
+      ],
+      "totalAmount": 1899.97,
+      "deliveryStatus": "Shipped",
+      "deliveryETA": "2024-05-12",
+      "deliveryID": "D004",
+      "paymentStatus": "Paid",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Completed",
+      "changeID": "C002",
+      "paymentMethod": "Debit Card",
+      "check_invoice_id": "INV004"
+    },
+    {
+      "id": "ORD005",
+      "transactionID": "TXN005",
+      "itemID": [
+        "P008"
+      ],
+      "itemName": [
+        "Digital Camera"
+      ],
+      "totalAmount": 799,
+      "deliveryStatus": "Processing",
+      "deliveryETA": "2024-05-07",
+      "deliveryID": "",
+      "paymentStatus": "Pending",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Processing",
+      "changeID": "",
+      "paymentMethod": "Credit Card",
+      "check_invoice_id": "INV005"
+    },
+    {
+      "id": "ORD006",
+      "transactionID": "TXN006",
+      "itemID": [
+        "P009"
+      ],
+      "itemName": [
+        "Bluetooth Speaker"
+      ],
+      "totalAmount": 129.99,
+      "deliveryStatus": "Pending",
+      "deliveryETA": "",
+      "deliveryID": "",
+      "paymentStatus": "Pending",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Pending",
+      "changeID": "",
+      "paymentMethod": "PayPal",
+      "check_invoice_id": "INV006"
+    },
+    {
+      "id": "ORD007",
+      "transactionID": "TXN007",
+      "itemID": [
+        "P010"
+      ],
+      "itemName": [
+        "Fitness Tracker"
+      ],
+      "totalAmount": 69.99,
+      "deliveryStatus": "Shipped",
+      "deliveryETA": "2024-05-09",
+      "deliveryID": "D005",
+      "paymentStatus": "Paid",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Completed",
+      "changeID": "C003",
+      "paymentMethod": "Credit Card",
+      "check_invoice_id": "INV007"
+    },
+    {
+      "id": "ORD008",
+      "transactionID": "TXN008",
+      "itemID": [
+        "P011",
+        "P012"
+      ],
+      "itemName": [
+        "Gaming Console",
+        "Controller"
+      ],
+      "totalAmount": 599.98,
+      "deliveryStatus": "In Transit",
+      "deliveryETA": "2024-05-11",
+      "deliveryID": "D006",
+      "paymentStatus": "Paid",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Processing",
+      "changeID": "",
+      "paymentMethod": "Debit Card",
+      "check_invoice_id": "INV008"
+    },
+    {
+      "id": "ORD009",
+      "transactionID": "TXN009",
+      "itemID": [
+        "P013"
+      ],
+      "itemName": [
+        "Portable Charger"
+      ],
+      "totalAmount": 39.99,
+      "deliveryStatus": "Delivered",
+      "deliveryETA": "2024-05-06",
+      "deliveryID": "D007",
+      "paymentStatus": "Paid",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Completed",
+      "changeID": "C004",
+      "paymentMethod": "PayPal",
+      "check_invoice_id": "INV009"
+    },
+    {
+      "id": "ORD010",
+      "transactionID": "TXN010",
+      "itemID": [
+        "P014"
+      ],
+      "itemName": [
+        "Portable Bluetooth Headphones"
+      ],
+      "totalAmount": 89.99,
+      "deliveryStatus": "Processing",
+      "deliveryETA": "2024-05-08",
+      "deliveryID": "",
+      "paymentStatus": "Pending",
+      "refundStatus": "Not requested",
+      "refundETA": "",
+      "orderStatus": "Processing",
+      "changeID": "",
+      "paymentMethod": "Credit Card",
+      "check_invoice_id": "INV010"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "ORD001",
+      "itemID": "P001",
+      "review": "Great smartphone, excellent camera!"
+    },
+    {
+      "id": "ORD002",
+      "itemID": "P003",
+      "review": "The tablet works perfectly for my needs."
+    },
+    {
+      "id": "ORD004",
+      "itemID": "P005",
+      "review": "Powerful laptop, very satisfied with the purchase."
+    },
+    {
+      "id": "ORD004",
+      "itemID": "P006",
+      "review": "The external hard drive has ample storage."
+    },
+    {
+      "id": "ORD004",
+      "itemID": "P007",
+      "review": "Good quality mouse, ergonomic design."
+    },
+    {
+      "id": "ORD007",
+      "itemID": "P010",
+      "review": "The fitness tracker helps me stay motivated!"
+    },
+    {
+      "id": "ORD008",
+      "itemID": "P011",
+      "review": "Excited to start gaming with this console!"
+    },
+    {
+      "id": "ORD009",
+      "itemID": "P013",
+      "review": "Handy portable charger, charges quickly."
+    },
+    {
+      "id": "ORD010",
+      "itemID": "P014",
+      "review": "Comfortable and clear sound from these headphones."
+    }
   ]
 }

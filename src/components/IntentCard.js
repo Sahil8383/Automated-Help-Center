@@ -93,7 +93,6 @@ const IntentCard = ({ intent }) => {
       alert(`Refund status: ${order.data.refundStatus}`);
       alert(`Refund ETA: ${order.data.refundETA}`);
       alert(`Total amount: ${order.data.totalAmount}`);
-      window.location.reload();
     } catch (error) {
       console.error("Error tracking refund:", error);
     }
@@ -147,7 +146,7 @@ const IntentCard = ({ intent }) => {
               </button>
             </>
           )}
-          {intent === "change_order" && (
+          {(intent === "change_order" || intent === 'place_order' )&& (
             <>
               <a
                 href="/ecommerce"
@@ -155,37 +154,6 @@ const IntentCard = ({ intent }) => {
               >
                 Buy Items
               </a>
-            </>
-          )}
-          {intent === "place_order" && (
-            <>
-              <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Give me Order Name"
-                className="p-2 rounded-md border border-gray-400 focus:outline-none text-black focus:border-blue-500"
-              />
-              <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Give me Items"
-                className="p-2 rounded-md border border-gray-400 focus:outline-none text-black focus:border-blue-500"
-              />
-              <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="Give me Order Name"
-                className="p-2 rounded-md border border-gray-400 focus:outline-none text-black focus:border-blue-500"
-              />
-              <button
-                onClick={() => cancelOrder(inputValue)}
-                className="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2"
-              >
-                Send
-              </button>
             </>
           )}
           {(intent === "payment_issue" ||
@@ -199,7 +167,7 @@ const IntentCard = ({ intent }) => {
                 className="p-2 rounded-md border border-gray-400 focus:outline-none text-black focus:border-blue-500"
               />
               <button
-                onClick={handleSubmit}
+                onClick={() => paymentIssue(inputValue)}
                 className="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2"
               >
                 Send
@@ -225,7 +193,24 @@ const IntentCard = ({ intent }) => {
                 className="p-2 rounded-md border border-gray-400 focus:outline-none text-black focus:border-blue-500"
               />
               <button
-                onClick={handleSubmit}
+                onClick={() => trackRefund(inputValue)}
+                className="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2"
+              >
+                Send
+              </button>
+            </>
+          )}
+          {(intent === "check_invoice") && (
+            <>
+              <input
+                type="text"
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder="Give me Order ID."
+                className="p-2 rounded-md border border-gray-400 focus:outline-none text-black focus:border-blue-500"
+              />
+              <button
+                onClick={() => checkInvoice(inputValue)}
                 className="bg-indigo-600 text-white px-4 py-2 rounded-md ml-2"
               >
                 Send

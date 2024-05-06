@@ -120,17 +120,24 @@ const Chat = () => {
             {messages.map((message, index) => {
               if (message.type === "ai") {
                 return (
-                  <AiMessage
-                    message={message.message}
-                    intent={message.intent}
-                    recorded={message.recorded}
-                    messages={messages}
-                    totalMessages={messages.length}
-                    index={index}
-                    isLoading={isLoading}
-                    setIsLoading={setIsLoading}
-                    key={index}
-                  />
+                  <>
+                    {/* <div 
+                      className="border border-red-200 w-[1000px]"
+                    > */}
+                      <AiMessage
+                        message={message.message}
+                        intent={message.intent}
+                        recorded={message.recorded}
+                        messages={messages}
+                        totalMessages={messages.length}
+                        index={index}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
+                        key={index}
+                      />
+                      {/* <IntentCard intent={"cancel_order"} /> */}
+                    {/* </div> */}
+                  </>
                 );
               } else {
                 return <UserMessage message={message.message} key={index} />;
@@ -190,7 +197,6 @@ const AiMessage = ({
           />
         </div>
         {intent && <IntentCard intent={intent} />}
-        {/* <IntentCard intent={'Order'} /> */}
         <div className="flex-1 no-max-w-96 bg-white rounded-lg p-3 gap-3">
           <p className="text-gray-700">
             {message.replaceAll("{{{", "").replaceAll("}}}", "")}
